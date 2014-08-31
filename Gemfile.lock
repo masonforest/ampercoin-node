@@ -1,5 +1,6 @@
-PATH
-  remote: ../ampercoin
+GIT
+  remote: git://github.com/masonforest/ampercoin.git
+  revision: 640a15f93857bd41f9862fdabb29c67d9ce69133
   specs:
     ampercoin (0.0.1)
 
