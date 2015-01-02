@@ -2,15 +2,23 @@ class TransactionsController < ApplicationController
   protect_from_forgery except: :create
 
   def create
-    sender = Address.find_by_address(params[:sender])
-    receiver = Address.find_by_address(params[:receiver])
-    Transaction.create(
+    sender = Account.find_by_address(params[:sender])
+    receiver = Account.find_by_address(params[:receiver])
+
+    transaction = Transaction.new(
       sender: sender,
       receiver: receiver,
-      amount: params[:amount]
+      amount: params[:amount],
+      signature: params[:signature]
     )
 
-    render text: :ok
+
+    if transaction.save
+      render json: transaction
+    else
+      render json: { errors: transaction.errors }, status: 422
+    end
+
   end
 
   def index

@@ -11,13 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140831153656) do
+ActiveRecord::Schema.define(version: 20141227173018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "addresses", force: true do |t|
+  create_table "accounts", force: true do |t|
     t.string   "address"
+    t.string   "public_key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blocks", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -25,9 +31,11 @@ ActiveRecord::Schema.define(version: 20140831153656) do
   create_table "transactions", force: true do |t|
     t.integer  "sender_id"
     t.integer  "receiver_id"
+    t.integer  "block_id"
     t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "signature"
   end
 
 end
