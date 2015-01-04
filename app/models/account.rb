@@ -10,6 +10,10 @@ class Account < ActiveRecord::Base
     key.verify(message, signature)
   end
 
+  def transactions
+    credits + debits
+  end
+
   private
 
   def total_debits

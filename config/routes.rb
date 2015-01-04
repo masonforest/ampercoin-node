@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   resources :transactions
-  resources :accounts
+  resources :accounts, only: [:show, :create]
 end
