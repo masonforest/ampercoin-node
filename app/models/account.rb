@@ -11,7 +11,7 @@ class Account < ActiveRecord::Base
   end
 
   def transactions
-    credits + debits
+    (credits + debits).sort{|a, b| b.created_at <=> a.created_at }
   end
 
   private

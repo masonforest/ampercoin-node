@@ -10,8 +10,8 @@ gem 'pry'
 gem 'spring', group: :development
 gem 'jbuilder'
 
-#gem 'ampercoin', path: '../ampercoin'
-gem 'ampercoin', github: 'ampercoin/ampercoin-gem'
+gem 'ampercoin', path: '../ampercoin-gem'
+#gem 'ampercoin', github: 'ampercoin/ampercoin-gem'
 
 group 'test', 'development' do
   gem 'factory_girl_rails'

@@ -10,14 +10,14 @@ describe 'creating a transaction', type: :request do
     receiver = create(:account)
 
     transaction = {
-      sender: sender.address,
-      receiver: receiver.address,
+      sender_id: sender.id,
+      receiver_id: receiver.id,
       amount: 10
     }
 
     signature = sender_address.sign(transaction.to_json)
 
-    post '/transactions', transaction.merge(signature: signature)
+    post '/transactions', transaction: transaction.merge(signature: signature)
 
     expect(response.status).to be 200
 
@@ -30,9 +30,9 @@ describe 'creating a transaction', type: :request do
     sender = create(:account)
     receiver = create(:account)
 
-    post '/transactions', {
-      receiver: receiver.address,
-      sender: sender.address,
+    post '/transactions', transaction: {
+      receiver_id: receiver.id,
+      sender_id: sender.id,
       amount: 10,
       signature: 'invalid_signature'
     }

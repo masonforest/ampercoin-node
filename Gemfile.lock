@@ -1,8 +1,8 @@
-GIT
-  remote: git://github.com/ampercoin/ampercoin-gem.git
-  revision: 1642009754cbc6e7aaf6949e38095e6b13f79974
+PATH
+  remote: ../ampercoin-gem
   specs:
     ampercoin (0.0.1)
+      activesupport
 
 GEM
   remote: https://rubygems.org/

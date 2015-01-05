@@ -13,9 +13,9 @@ class Transaction < ActiveRecord::Base
 
   def contract
     {
-      sender: sender.address,
-      receiver: receiver.address,
-      amount: amount
+      sender_id: sender.id.to_s,
+      receiver_id: receiver.id.to_s,
+      amount: amount.to_s
     }.to_json
   end
 end
