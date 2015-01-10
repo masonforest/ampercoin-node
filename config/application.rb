@@ -35,5 +35,6 @@ module AmpercoinNode
       end
     end
     config.autoload_paths << Rails.root.join('app/validators')
+    config.autoload_paths << Rails.root.join('app/serializers')
   end
 end

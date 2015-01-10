@@ -4,7 +4,7 @@ class TransactionsController < ApplicationController
   def create
     transaction = Transaction.new(transaction_params)
     if transaction.save
-      render json: transaction, root: true
+      render json: transaction
     else
       render json: { errors: transaction.errors }, status: 422
     end

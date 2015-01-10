@@ -15,7 +15,7 @@ class Transaction < ActiveRecord::Base
     {
       sender_id: sender.id.to_s,
       receiver_id: receiver.id.to_s,
-      amount: amount.to_s
+      amount: '%.8f' % amount
     }.to_json
   end
 end

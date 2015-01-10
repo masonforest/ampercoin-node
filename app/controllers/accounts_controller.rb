@@ -11,7 +11,7 @@ class AccountsController < ApplicationController
   def show
     @account = Account.find_by_address(params[:id])
 
-    render json: @account
+    render json: @account, root: :account,serializer: AccountWithTransactionsSerializer
   end
 
   def account_params
