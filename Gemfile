@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'active_model_serializers'
 gem 'database_cleaner'
+gem 'dotenv-rails'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rails', '4.1.4'
 gem 'rails_12factor'

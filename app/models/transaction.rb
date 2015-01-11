@@ -6,9 +6,14 @@ class Transaction < ActiveRecord::Base
   accepts_nested_attributes_for :sender
   accepts_nested_attributes_for :receiver
   validates :signature, signature: {verify: :contract}
+  validates :amount, numericality: { less_than_or_equal_to: :sender_balance }
 
   def self.total
     sum(:amount)
+  end
+
+  def sender_balance
+    sender.balance
   end
 
   def contract

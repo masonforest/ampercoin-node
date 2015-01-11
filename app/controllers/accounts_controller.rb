@@ -1,10 +1,16 @@
 class AccountsController < ApplicationController
   protect_from_forgery except: :create
+  before_action :authorize, only: :create
 
+  def authorize
+    if params[:key] != ENV['SECRET_KEY']
+      head status: :unauthorized
+    end
+  end
   def create
     @account = Account.new(account_params)
     @account.save
-
+    Transaction.new(receiver: @account, amount: 10).save(validate: false)
     render json: @account
   end
 
