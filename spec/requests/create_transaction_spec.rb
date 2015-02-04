@@ -7,12 +7,13 @@ describe 'creating a transaction', type: :request do
       :account,
       public_key: sender_address.public_key
     )
+    build(:transaction, receiver: sender, amount: 10).save(validate: false)
     receiver = create(:account)
 
     transaction = {
-      sender_id: sender.id,
-      receiver_id: receiver.id,
-      amount: 10
+      sender_id: sender.id.to_s,
+      receiver_id: receiver.id.to_s,
+      amount: '%.8f' % 10
     }
 
     signature = sender_address.sign(transaction.to_json)
@@ -23,12 +24,13 @@ describe 'creating a transaction', type: :request do
 
     get "/accounts/#{receiver.address}"
 
-    expect(JSON.parse(response.body)['account']['balance']).to eq 10
+    expect(JSON.parse(response.body)['account']['balance']).to eq "10.0"
   end
 
   it "responds with an error if the transaction has an invalid signature" do
     sender = create(:account)
     receiver = create(:account)
+    build(:transaction, receiver: sender, amount: 10).save(validate: false)
 
     post '/transactions', transaction: {
       receiver_id: receiver.id,

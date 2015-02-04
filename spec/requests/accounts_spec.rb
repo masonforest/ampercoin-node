@@ -7,7 +7,6 @@ describe 'creating a transaction', type: :request do
 
     get "/accounts/#{user.address}"
 
-    expect(json_response['account']['balance']).to eq 10
-    expect(json_response['credits']).to be_present
+    expect(json_response['account']['balance']).to eq "10.0"
   end
 end

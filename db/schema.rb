@@ -16,19 +16,19 @@ ActiveRecord::Schema.define(version: 20150105050719) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "accounts", force: true do |t|
+  create_table "accounts", force: :cascade do |t|
     t.string   "address"
     t.string   "public_key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "blocks", force: true do |t|
+  create_table "blocks", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "transactions", force: true do |t|
+  create_table "transactions", force: :cascade do |t|
     t.integer  "sender_id"
     t.integer  "receiver_id"
     t.integer  "block_id"
